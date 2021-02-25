@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next'
 import { useConfiguration } from '../../../globalContext/ConfigurationContext'
 import Description from '../components/Description';
 import PersonsSelector from '../components/PersonsSelector';
-import { storage } from '../../../services/firebase';
+import LogoSection from '../components/LogoSection';
 
-import loadingGif from '../../../assets/icons/loadinGif.gif'
+
 
 const FormWrapper = styled.div`
     margin-top:42px;
@@ -39,21 +39,7 @@ font-size:14px;
 
 `
 
-const LogoHolder = styled.div`
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    height:67px;
-    width:67px;
-    font-size:37px;
-    border-radius:999px;
-    background-color:#343C4A;
-    background-image: url(${props => props.image});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-`
+
 
 const SectionContainer = styled.div`
 
@@ -69,6 +55,7 @@ const InputWrapper = styled.div`
     margin-bottom: 20px;
 `
 
+
 const MainForm = ({ ...props }) => {
 
     const { t } = useTranslation();
@@ -83,43 +70,9 @@ const MainForm = ({ ...props }) => {
         setPersonAmountIndex
     } = useConfiguration()
 
-    const [loadingImage, setLoadingImage] = useState(false)
+
     const optionsPersonsAmount = [t('JustMe'), '2-10', '11-25', '26-50', '51-100', '101-500', '500+']
 
-
-
-
-
-    const handleImageAsFile = (e) => {
-
-        const image = e.target.files[0]
-        if (image?.name) {
-            console.log(image)
-            const imageTitle = Date.now() + '_' + image.name
-            setLoadingImage(true)
-
-
-            const uploadTask = storage.ref(`/images/${imageTitle}`).put(image)
-
-
-
-            uploadTask.on('state_changed',
-                (snapShot) => {
-                    //Future Implementation... See the Upload Progress
-                    console.log(snapShot)
-                }, (err) => {
-                    //catches the errors
-                    console.log(err)
-                }, () => {
-                    console.log('Paso x Aqui')
-                    storage.ref('images').child(imageTitle).getDownloadURL()
-                        .then(fireBaseUrl => {
-                            setLoadingImage(false)
-                            setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
-                        })
-                })
-        }
-    }
 
 
 
@@ -131,15 +84,8 @@ const MainForm = ({ ...props }) => {
             <SectionContainer>
                 <SectionTitle>{t("LogoSpace")}</SectionTitle>
 
-                <div style={{ display: 'flex' }}>
-                    <LogoHolder image={loadingImage? loadingGif:imageAsUrl.imgUrl}> {!imageAsUrl.imgUrl&&!loadingImage ?  "B" : ""} </LogoHolder>
+                <LogoSection />
 
-
-
-                    <input type="file"
-                        onChange={handleImageAsFile}
-                    />
-                </div>
             </SectionContainer>
             <SectionContainer>
                 <Description>
@@ -153,6 +99,7 @@ const MainForm = ({ ...props }) => {
                 <InputWrapper>
                     <Input placeholder={t('NameSpacePlaceholder')} value={spaceName} onChange={e => { setSpaceName(e.target.value) }} />
                 </InputWrapper>
+
             </SectionContainer>
             <SectionContainer>
                 <SectionTitle>{t("UrlSpace")}</SectionTitle>

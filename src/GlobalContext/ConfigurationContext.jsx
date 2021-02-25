@@ -5,7 +5,7 @@ const ConfigurationContext = createContext();
 
 const ConfigurationContextProvider = props => {
 
-  const [imageAsUrl, setImageAsUrl] = useState({ imgUrl: '' })
+  const [imageAsUrl, setImageAsUrl] = useState('')
   const [spaceName, setSpaceName] = useState('')
   const [spaceURL, setSpaceURL] = useState('')
   const [personAmountIndex, setPersonAmountIndex] = useState(0)

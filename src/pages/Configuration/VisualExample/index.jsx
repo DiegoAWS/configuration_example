@@ -185,7 +185,7 @@ const Div = styled.div`
      }
 
      @media (min-width: 768) {
-        width:42%;
+        flex:1;
     } 
     @media (max-width: 767) {
         display:none;

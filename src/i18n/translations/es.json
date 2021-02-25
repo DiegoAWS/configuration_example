@@ -2,6 +2,7 @@
     "translation": {
         "Configuration": "Configuración",
         "LogoSpace":"Logo del Espacio",
+        "UploadLogo":"Subir Logo",
         "LogoDescription1":"Este logo identificará tu espacio entre el resto.",
         "LogoDescription2":"Preferiblemente sube una imagen .png igual o superior a 65px a 72ppp con fondo transparente.",
         "NameSpace":"Nombre del Espacio",
