@@ -8,14 +8,14 @@ const ConfigurationContextProvider = props => {
   const [logoURL, setLogoURL] = useState('')
   const [spaceName, setSpaceName] = useState('')
   const [spaceURL, setSpaceURL] = useState('')
-  const [cantidadIndex, setCantidadIndex] = useState(0)
+  const [personAmountIndex, setPersonAmountIndex] = useState(0)
   const [colorTheme, setColorTheme] = useState("#48B5FE")
   
   const instanceConfig = {
     logoURL, setLogoURL,
     spaceName, setSpaceName,
     spaceURL, setSpaceURL,
-    cantidadIndex, setCantidadIndex,
+    personAmountIndex, setPersonAmountIndex,
     colorTheme, setColorTheme
   };
 

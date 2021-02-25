@@ -183,11 +183,17 @@ const Div = styled.div`
          fill:#ff0000;
      }
 
+     @media (min-width: 768) {
+        width:42%;
+    } 
+    @media (max-width: 767) {
+        display:none;
+    } 
 `
-const VisualExample=() => {
+const VisualExample = ({ ...props }) => {
     return (
-        <Div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="807" height="598" viewBox="0 0 807 598">
+        <Div  {...props}>
+            <svg style={{ width: '100%' }} xmlns="http://www.w3.org/2000/svg" width="807" height="598" viewBox="0 0 807 598">
                 <defs>
                     <clipPath id="a">
                         <rect className="a" width="807" height="598" transform="translate(1093 225)" />
@@ -348,7 +354,7 @@ const VisualExample=() => {
                         </text><text className="v" transform="translate(3850.538 705.215)">
                             <tspan x="0" y="0">https:</tspan>
                         </text><text className="w" transform="translate(3892.538 705.215)">
-                            <tspan  x="0" y="0">mi_dominio.plankton.com/proyectos/plan_de_ventas</tspan>
+                            <tspan x="0" y="0">mi_dominio.plankton.com/proyectos/plan_de_ventas</tspan>
                         </text><text className="w" transform="translate(3742.538 673.215)">
                             <tspan x="0" y="0">Plankton - Mi Espacio</tspan>
                         </text>
