@@ -1,5 +1,25 @@
 {
     "translation": {
-        "Configuration": "Réglage"
+        "Settings": "Paramètres",
+        "LogoSpace": "Logo del Espacio",
+        "UploadLogo": "Télécharger le logo",
+        "LogoDescription1": "Ce logo identifiera votre espace parmi les autres.",
+        "LogoDescription2": "Chargez de préférence une image .png égale ou supérieure à 65px à 72 dpi avec un fond transparent.",
+        "NameSpace": "Nom de l'espace",
+        "NameSpacePlaceholder": "Ep: Mon espace de travail",
+        "UrlSpace": "URL de l'espace (adresse Web)",
+        "UrlSpacePlaceholder": "Ep: mon.domaine",
+        "UrlDescription1": "Vous pouvez modifier l'URL de votre espace (adresse Web) à tout moment, mais par courtoisie envers vos collègues et autres utilisateurs de Plankton, veuillez ne pas le faire trop souvent :)",
+        "UrlDescription2": "Remarque: Si vous modifiez l'URL de votre espace, le plancton sera automatiquement redirigé de l'ancienne adresse vers la nouvelle. Dans tous les cas, vous devez vous assurer que vos collègues sont au courant du changement car l'ancienne adresse deviendra libre et peut être utilisé par un autre espace dans le futur. ",
+        "PersonAmountName": "Combien de personnes travailleront avec vous, y compris vous?",
+        "JustMe": "Juste moi",
+        "ThemeColor": "Couleur du thème",
+        "PrivacyTitle": "Confidentialité de l'espace",
+        "Private": "Privé",
+        "PrivateDescription": "Le contenu ne sera visible que par vous et les membres de votre organisation.",
+        "Public": "Public",
+        "PublicDescription": "Toute personne disposant du lien pourra voir l'activité de votre organisation",
+        "SaveChanges": "Enregistrer les modifications",
+        "Discard": "Supprimer"
     }
 }

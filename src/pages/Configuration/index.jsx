@@ -7,7 +7,7 @@ import MainForm from './MainForm'
 export default function index() {
     return (
 
-            <div style={{ display: 'flex'}}>
+            <div style={{ display: 'flex',justifyContent:'space-between'}}>
 
                 <MainForm />
                 <VisualExample />

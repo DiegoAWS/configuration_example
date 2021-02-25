@@ -1,6 +1,6 @@
 {
     "translation": {
-        "Configuration": "Configuración",
+        "Settings": "Configuración",
         "LogoSpace":"Logo del Espacio",
         "UploadLogo":"Subir Logo",
         "LogoDescription1":"Este logo identificará tu espacio entre el resto.",
@@ -21,8 +21,5 @@
         "PublicDescription":"Cualquiera con el vínculo podrá ver la actividad de tu Organización",
         "SaveChanges":"Guardar cambios",
         "Discard":"Descartar"
-
-
-
     }
 }

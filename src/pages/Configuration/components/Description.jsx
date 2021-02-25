@@ -3,6 +3,7 @@ import React from 'react'
 import InfoIcon from '../../../assets/icons/InfoIcon.svg'
 
 
+
 export default function Description({ children }) {
     return (
         <div style={{ display: 'flex', marginTop: '16px' }}>

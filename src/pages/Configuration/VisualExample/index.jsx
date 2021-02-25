@@ -179,22 +179,38 @@ const BaseStyle = css`
 const Div = styled.div`
 
     ${BaseStyle}
-
+    
+     .s,
      .o{
-         fill:#ff0000;
+         fill:${props=>props.colorTheme};
      }
 
-     @media (min-width: 768) {
-        flex:1;
-    } 
-    @media (max-width: 767) {
+    
+
+
+
+    @media (max-width: 767px) {
         display:none;
     } 
+
+    @media (min-width: 768px) {
+        margin-top:70px;
+    } 
+    @media (min-width: 1024px) {
+      margin-top:150;
+    } 
+  
+    @media (min-width: 1366px) {
+        margin-top:190px;
+    } 
+
 `
 const VisualExample = ({ ...props }) => {
 
     const { spaceName,
         spaceURL,
+        colors,
+        colorThemeIndex
     } = useConfiguration()
 
     
@@ -202,7 +218,7 @@ const VisualExample = ({ ...props }) => {
 
 
     return (
-        <Div  {...props}>
+        <Div colorTheme={colors[colorThemeIndex]} {...props}>
             <svg style={{ width: '100%' }} xmlns="http://www.w3.org/2000/svg" width="807" height="598" viewBox="0 0 807 598">
                 <defs>
                     <clipPath id="a">
