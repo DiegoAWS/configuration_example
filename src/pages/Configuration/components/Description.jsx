@@ -1,6 +1,6 @@
 import React from 'react'
 
-import InfoIcon from '../../assets/icons/InfoIcon.svg'
+import InfoIcon from '../../../assets/icons/InfoIcon.svg'
 
 
 export default function Description({ children }) {
@@ -9,7 +9,7 @@ export default function Description({ children }) {
 
             <img alt="" src={InfoIcon} height="17px" />
 
-            <div style={{ marginLeft: '8px', marginBottom: '30px' }}>
+            <div style={{ marginLeft: '8px'}}>
 
                 {children}
 

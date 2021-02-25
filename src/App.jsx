@@ -1,6 +1,6 @@
 import React from 'react'
-import { ConfigurationContextProvider } from './GlobalContext/ConfigurationContext'
-import Configuration from './Configuration'
+import { ConfigurationContextProvider } from './globalContext/ConfigurationContext'
+import Configuration from './pages/Configuration'
 
 const App = () => {
     return (

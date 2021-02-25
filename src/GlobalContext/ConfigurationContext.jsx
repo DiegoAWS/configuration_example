@@ -5,14 +5,14 @@ const ConfigurationContext = createContext();
 
 const ConfigurationContextProvider = props => {
 
-  const [logoURL, setLogoURL] = useState('')
+  const [imageAsUrl, setImageAsUrl] = useState({ imgUrl: '' })
   const [spaceName, setSpaceName] = useState('')
   const [spaceURL, setSpaceURL] = useState('')
   const [personAmountIndex, setPersonAmountIndex] = useState(0)
   const [colorTheme, setColorTheme] = useState("#48B5FE")
   
   const instanceConfig = {
-    logoURL, setLogoURL,
+    imageAsUrl, setImageAsUrl,
     spaceName, setSpaceName,
     spaceURL, setSpaceURL,
     personAmountIndex, setPersonAmountIndex,

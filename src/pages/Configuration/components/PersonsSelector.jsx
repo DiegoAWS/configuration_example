@@ -24,7 +24,7 @@ export default function PersonsSelector({ optionsTitle, personAmountIndex, setPe
     return (
         <div style={{ display: 'flex', flexWrap: 'nowrap' }} {...props}>
             {
-                optionsTitle.map((item, index) => <BottonSelect selected={index === personAmountIndex} onClick={() => { handleClick(index) }}>{item}</BottonSelect>)
+                optionsTitle.map((item, index) => <BottonSelect key={index} selected={index === personAmountIndex} onClick={() => { handleClick(index) }}>{item}</BottonSelect>)
             }
         </div>
     )

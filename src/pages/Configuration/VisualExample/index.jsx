@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { useConfiguration } from '../../../globalContext/ConfigurationContext'
 
 //#region BaseStyle
 const BaseStyle = css`
@@ -191,6 +192,15 @@ const Div = styled.div`
     } 
 `
 const VisualExample = ({ ...props }) => {
+
+    const { spaceName,
+        spaceURL,
+    } = useConfiguration()
+
+    
+    const TruncatedTitle=spaceName.length>10?spaceName.slice(0,10)+'...':spaceName
+
+
     return (
         <Div  {...props}>
             <svg style={{ width: '100%' }} xmlns="http://www.w3.org/2000/svg" width="807" height="598" viewBox="0 0 807 598">
@@ -354,9 +364,9 @@ const VisualExample = ({ ...props }) => {
                         </text><text className="v" transform="translate(3850.538 705.215)">
                             <tspan x="0" y="0">https:</tspan>
                         </text><text className="w" transform="translate(3892.538 705.215)">
-                            <tspan x="0" y="0">mi_dominio.plankton.com/proyectos/plan_de_ventas</tspan>
+                            <tspan x="0" y="0">{spaceURL}.plankton.com/proyectos/plan_de_ventas</tspan>
                         </text><text className="w" transform="translate(3742.538 673.215)">
-                            <tspan x="0" y="0">Plankton - Mi Espacio</tspan>
+                            <tspan x="0" y="0">Plankton - {TruncatedTitle}</tspan>
                         </text>
                         <rect className="x" width="1" height="16" transform="translate(3843 692)" />
                         <circle className="u" cx="10" cy="10" r="10" transform="translate(3716 658)" />
