@@ -22,11 +22,11 @@ const ColorSphere = styled.div`
     box-shadow: ${props => props.selected ? '0px 0px 1px 3px ' + props.color : 'none'}; 
     
   
-    @media (min-width: 1366px) {
+    @media (max-width: 1366px) {
         height: 30px;
         width:30px;
     } 
-  @media (min-width: 768px) {
+    @media (max-width: 768px) {
         height: 28px;
         width:28px;
     } 
@@ -37,6 +37,15 @@ const InternalSphere = styled.div`
     width:25px;
     border-radius:999px;
     background-color:${props => props.color};
+
+    @media (max-width: 1366px) {
+        height: 23px;
+        width:23px;
+    } 
+    @media (max-width: 768px) {
+        height: 20px;
+        width:20px;
+    } 
 `
 
 export default function ColorPicker() {
