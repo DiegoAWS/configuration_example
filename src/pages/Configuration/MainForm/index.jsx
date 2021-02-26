@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import { useConfiguration } from '../../../globalContext/ConfigurationContext'
@@ -9,6 +9,7 @@ import PersonsSelector from '../components/PersonsSelector';
 import LogoSection from '../components/LogoSection';
 import ComponentHolder from '../components/ComponentHolder';
 import ColorPicker from '../components/ColorPicker';
+import PrivacySelector from '../components/PrivacySelector';
 
 
 
@@ -36,12 +37,32 @@ const FormWrapper = styled.div`
 
 `
 
-
+const TitleWrapper = styled.div`
+color:#000000D6;
+font-size:18px;
+font-weight: 900;
+`
 
 const InputWrapper = styled.div`
     margin-bottom: 20px;
 `
 
+const ButtonsWrapper = styled.div`
+   display:flex;
+   margin-top: 30px;
+
+   button{
+    border-radius: 5px;
+    margin: 10px;
+   }
+   button.colored{
+       background-color:#48B5FE;
+       color:white;
+   }
+   button.colored:hover{
+       color:black;
+   }
+`
 
 const MainForm = () => {
 
@@ -58,9 +79,17 @@ const MainForm = () => {
     } = useConfiguration()
 
 
+    
+    const saveChangesHandler=()=>{
+    }
+
+    const discardChangesHandler=()=>{
+
+    }
+
     return (
         <FormWrapper >
-            <h1>{t("Settings")}</h1>
+            <TitleWrapper>{t("Settings")}</TitleWrapper>
 
             <ComponentHolder title={t("LogoSpace")}
                 descriptions={[t('LogoDescription1'), t('LogoDescription2')]} >
@@ -68,14 +97,14 @@ const MainForm = () => {
             </ComponentHolder>
 
             <ComponentHolder title={t("NameSpace")}>
-                 <InputWrapper>
+                <InputWrapper>
                     <Input placeholder={t('NameSpacePlaceholder')} value={spaceName} onChange={e => { setSpaceName(e.target.value) }} />
                 </InputWrapper>
             </ComponentHolder>
 
             <ComponentHolder title={t("UrlSpace")}
                 descriptions={[t('UrlDescription1'), t('UrlDescription2')]} >
-                 <InputWrapper>
+                <InputWrapper>
                     <Input placeholder={t('UrlSpacePlaceholder')} value={spaceURL} onChange={e => { setSpaceURL(e.target.value.replace(/[^a-zA-Z0-9-_]/g, '')) }} />
                 </InputWrapper>
             </ComponentHolder>
@@ -90,10 +119,17 @@ const MainForm = () => {
             </ComponentHolder>
 
             <ComponentHolder title={t("ThemeColor")} >
-                <ColorPicker/>
+                <ColorPicker />
             </ComponentHolder>
 
+            <ComponentHolder title={t("PrivacyTitle")} style={{ marginTop: '30px' }}>
+                <PrivacySelector />
+            </ComponentHolder>
 
+            <ButtonsWrapper>
+                <Button  className="colored" onClick={saveChangesHandler}>{t('SaveChanges')}</Button>
+                <Button onClick={discardChangesHandler}>{t('Discard')}</Button>
+            </ButtonsWrapper>
         </FormWrapper>
     )
 }

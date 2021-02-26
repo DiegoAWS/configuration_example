@@ -12,7 +12,7 @@ const SectionContainer = styled.div`
 const SectionTitle = styled.div`
     
     font-size:14px;
-
+    font-weight: 900;
 `
 
 
@@ -37,7 +37,7 @@ const DetailsContainer = styled.div`
 `
 
 
-export default function ComponentHolder({ title, descriptions=[], children, ...props }) {
+export default function ComponentHolder({ title, descriptions = [], children, ...props }) {
 
     return (
         <SectionContainer {...props}>
@@ -45,11 +45,11 @@ export default function ComponentHolder({ title, descriptions=[], children, ...p
 
             {children}
 
-            <Description>
+            {(descriptions.length > 0) && <Description>
 
-            {descriptions.map((item,index) => <DetailsContainer key={index}>{item}</DetailsContainer>)}   
-                
-            </Description>
+                {descriptions.map((item, index) => <DetailsContainer key={index}>{item}</DetailsContainer>)}
+
+            </Description>}
 
         </SectionContainer>
     )

@@ -66,14 +66,14 @@ const ImageUploader = styled.label`
         box-shadow:0px 0px 5px #48B5FE;
     }
 `
-const UploadIconDiv=styled.div`
+const UploadIconDiv = styled.div`
     height:13px;
     width:13px;
     margin-right:8px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image:url(${props=>props.src});
+    background-image:url(${props => props.src});
 `
 
 export default function LogoSection() {
@@ -82,12 +82,14 @@ export default function LogoSection() {
     const { setImageAsUrl } = useConfiguration()
 
     const [imagePreview, setImagePreview] = useState('')
+    const [imageName, setImageName] = useState('')
+
 
     const handleImageAsFile = (e) => {
 
         const image = e.target.files[0]
         const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-        console.log(image)
+
         if (image?.name?.match(allowedExtensions) && image.size > 10000 && image.size < 5000000) {
 
 
@@ -102,6 +104,7 @@ export default function LogoSection() {
 
             //Making Unique the fileName
             const imageTitle = Date.now() + '_' + image.name
+            setImageName(imageTitle)
 
             const uploadTask = storage.ref(`/images/${imageTitle}`).put(image)
 
@@ -115,20 +118,29 @@ export default function LogoSection() {
     }
 
 
+
     const RemoveImage = () => {
         setImagePreview('')
         setImageAsUrl('')
+
+        const imageToDelete = storage.ref('images').child(imageName);
+
+
+        imageToDelete.delete().then(function () {
+            setImageName('')
+        })
+
     }
 
     return (
         <LogoSectionWrapper>
             <LogoHolder image={imagePreview}>
                 {!imagePreview ? "B" : ""}
-               {imagePreview && <RemovePict onClick={RemoveImage} > &times; </RemovePict>}
+                {imagePreview && <RemovePict onClick={RemoveImage} > &times; </RemovePict>}
             </LogoHolder>
 
 
-            <ImageUploader htmlFor="LogoUpload"> <UploadIconDiv src={UploadIcon}/> {t('UploadLogo')} </ImageUploader>
+            <ImageUploader htmlFor="LogoUpload"> <UploadIconDiv src={UploadIcon} /> {t('UploadLogo')} </ImageUploader>
 
             <input type="file" hidden id="LogoUpload"
                 accept=".png, .jpg, .jpeg .gif"
