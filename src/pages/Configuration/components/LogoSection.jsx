@@ -84,7 +84,6 @@ export default function LogoSection() {
         setImageAsUrl,
         imagePreview,
         setImagePreview,
-        imageName,
         setImageName
     } = useConfiguration()
 
