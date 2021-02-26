@@ -12,10 +12,15 @@ const ConfigurationContextProvider = props => {
   const [spaceURL, setSpaceURL] = useState('')
   const [personAmountIndex, setPersonAmountIndex] = useState(0)
   const [colorThemeIndex, setColorThemeIndex] = useState(0)
-  
+  const [privacyIndex, setPrivacyIndex] = useState(0)
+
+  const [imagePreview, setImagePreview] = useState('')
+  const [imageName, setImageName] = useState('')
+
+
   const optionsPersonsAmount = [t('JustMe'), '2-10', '11-25', '26-50', '51-100', '101-500', '500+']
 
-  const colors=[
+  const colors = [
     '#39B0FF',
     '#04B58B',
     '#3E9C4B',
@@ -26,7 +31,9 @@ const ConfigurationContextProvider = props => {
     '#D6198A',
     '#B321F1',
     '#48B5FE'
-]
+  ]
+  const privacyOptions = ['Private', 'Public']
+
 
   const instanceConfig = {
     imageAsUrl, setImageAsUrl,
@@ -35,7 +42,10 @@ const ConfigurationContextProvider = props => {
     personAmountIndex, setPersonAmountIndex,
     colorThemeIndex, setColorThemeIndex,
     optionsPersonsAmount,
-    colors
+    colors, privacyOptions,
+    privacyIndex, setPrivacyIndex,
+    imagePreview, setImagePreview,
+    imageName, setImageName
   };
 
   return (

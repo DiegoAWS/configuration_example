@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { storage, configStorage } from '../../../services/firebase';
 
 import { Input, Button } from 'antd';
 import styled from 'styled-components'
@@ -10,6 +11,7 @@ import LogoSection from '../components/LogoSection';
 import ComponentHolder from '../components/ComponentHolder';
 import ColorPicker from '../components/ColorPicker';
 import PrivacySelector from '../components/PrivacySelector';
+import LanguageSelector from '../components/LanguageSelector';
 
 
 
@@ -38,9 +40,15 @@ const FormWrapper = styled.div`
 `
 
 const TitleWrapper = styled.div`
-color:#000000D6;
-font-size:18px;
-font-weight: 900;
+   display:flex;
+   justify-content:space-between;
+`
+
+
+const Title = styled.div`
+    color:#000000D6;
+    font-size:18px;
+    font-weight: 900;
 `
 
 const InputWrapper = styled.div`
@@ -66,30 +74,105 @@ const ButtonsWrapper = styled.div`
 
 const MainForm = () => {
 
+
+
+
     const { t } = useTranslation();
     const {
-        // imageAsUrl,
+        imageAsUrl,
+        setImageAsUrl,
         spaceName,
         setSpaceName,
         spaceURL,
         setSpaceURL,
         personAmountIndex,
         setPersonAmountIndex,
-        optionsPersonsAmount
+        optionsPersonsAmount,
+        imagePreview,
+        setImagePreview,
+        imageName,
+        setImageName,
+        colorThemeIndex,
+        setColorThemeIndex,
+        privacyIndex,
+        setPrivacyIndex
     } = useConfiguration()
 
+    useEffect(() => {
 
-    
-    const saveChangesHandler=()=>{
+        const loadData = configStorage.on('value', (snapshot) => {
+
+            const data = snapshot.val();
+            if (data) {
+                try {
+                    setImageAsUrl(data.imageAsUrl)
+                    setImagePreview(data.imageAsUrl)
+                    
+                    setImageName(data.imageName)
+                    setSpaceName(data.spaceName)
+                    setSpaceURL(data.spaceURL)
+                    setPersonAmountIndex(data.personAmountIndex)
+                    setColorThemeIndex(data.colorThemeIndex)
+                    setPrivacyIndex(data.privacyIndex)
+                }
+                catch (e) {
+                    console.log(e)
+                }
+            }
+        });
+
+        return () => {
+            configStorage.off("value", loadData);
+        }
+        // eslint-disable-next-line
+    }, []);
+
+
+
+    const saveChangesHandler = async () => {
+
+
+        configStorage.update({
+            imageAsUrl,
+            imageName,
+            spaceName,
+            spaceURL,
+            personAmountIndex,
+            colorThemeIndex,
+            privacyIndex
+        })
+
+
+
+
     }
 
-    const discardChangesHandler=()=>{
+    const discardChangesHandler = () => {
+
+        spaceName && setSpaceName('')
+        spaceURL && setSpaceURL('')
+        setPersonAmountIndex && setPersonAmountIndex(0)
+
+        imagePreview && setImagePreview('')
+        colorThemeIndex && setColorThemeIndex(0)
+        privacyIndex && setPrivacyIndex(0)
+
+        if (imageName) {
+            const imageToDelete = storage.ref('images').child(imageName);
+
+            imageToDelete.delete().then(function () {
+                setImageName('')
+            })
+        }
 
     }
 
     return (
         <FormWrapper >
-            <TitleWrapper>{t("Settings")}</TitleWrapper>
+            <TitleWrapper>
+                <Title>{t("Settings")} </Title>
+                <LanguageSelector />
+            </TitleWrapper>
 
             <ComponentHolder title={t("LogoSpace")}
                 descriptions={[t('LogoDescription1'), t('LogoDescription2')]} >
@@ -127,7 +210,7 @@ const MainForm = () => {
             </ComponentHolder>
 
             <ButtonsWrapper>
-                <Button  className="colored" onClick={saveChangesHandler}>{t('SaveChanges')}</Button>
+                <Button className="colored" onClick={saveChangesHandler}>{t('SaveChanges')}</Button>
                 <Button onClick={discardChangesHandler}>{t('Discard')}</Button>
             </ButtonsWrapper>
         </FormWrapper>

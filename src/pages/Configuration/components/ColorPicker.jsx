@@ -30,14 +30,14 @@ const ColorSphere = styled.div`
 `
 
 const InternalSphere = styled.div`
-    height: 23px;
-    width:23px;
+    height: 22px;
+    width:22px;
     border-radius:999px;
     border:3px solid white;
     background-color:transparent;
     @media (max-width: 1366px) {
-        height: 21px;
-        width:21px;
+        height: 20px;
+        width:20px;
     } 
     @media (max-width: 768px) {
         height: 25px;

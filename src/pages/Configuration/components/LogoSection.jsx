@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { storage } from '../../../services/firebase';
 import styled from 'styled-components'
 import { useConfiguration } from '../../../globalContext/ConfigurationContext';
@@ -51,7 +51,8 @@ const RemovePict = styled.div`
 `
 const ImageUploader = styled.label`
     margin-left:13px;
-    width:105px;
+    min-width:105px;
+    padding:0px 5px;
     height:32px;
     border-radius:5px;
     border:1px solid gray;
@@ -79,10 +80,15 @@ const UploadIconDiv = styled.div`
 export default function LogoSection() {
 
     const { t } = useTranslation();
-    const { setImageAsUrl } = useConfiguration()
+    const {
+        setImageAsUrl,
+        imagePreview,
+        setImagePreview,
+        imageName,
+        setImageName
+    } = useConfiguration()
 
-    const [imagePreview, setImagePreview] = useState('')
-    const [imageName, setImageName] = useState('')
+
 
 
     const handleImageAsFile = (e) => {
@@ -123,12 +129,7 @@ export default function LogoSection() {
         setImagePreview('')
         setImageAsUrl('')
 
-        const imageToDelete = storage.ref('images').child(imageName);
-
-
-        imageToDelete.delete().then(function () {
-            setImageName('')
-        })
+       
 
     }
 

@@ -1,8 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import Description from './Description'
-
+import InfoIcon from '../../../assets/icons/InfoIcon.svg'
 
 const SectionContainer = styled.div`
 
@@ -14,7 +13,6 @@ const SectionTitle = styled.div`
     font-size:14px;
     font-weight: 900;
 `
-
 
 const DetailsContainer = styled.div`
    
@@ -35,6 +33,21 @@ const DetailsContainer = styled.div`
 
 
 `
+const Description=({ children })=> {
+    return (
+        <div style={{ display: 'flex', marginTop: '16px' }}>
+
+            <img alt="" src={InfoIcon} height="17px" />
+
+            <div style={{ marginLeft: '8px'}}>
+
+                {children}
+
+            </div>
+
+        </div>
+    )
+}
 
 
 export default function ComponentHolder({ title, descriptions = [], children, ...props }) {
