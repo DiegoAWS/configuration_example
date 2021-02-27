@@ -1,7 +1,6 @@
 # Prueba ReactJS Diego Escobar
 
-Proyecto de Prueba para postular a oferta laboral en empresa [Dofleini](https://dofleini.com/).
-
+Proyecto de Prueba
 [Visitelo en esta dirección.](https://prueba-diego-escobar.web.app/)
 
 ## Guia Visual
